@@ -3,6 +3,7 @@ const router = express.Router();
 const notes = require('../repositories');
 const getStats = require('../helpers/calckSum');
 const generateKey = require('../helpers/randomKey');
+const Joi = require('joi');
 
 
 /* GET home page. */
@@ -25,7 +26,21 @@ router.get('/notes/:id', function(req, res) {
 });
 
 router.post('/notes', function(req, res){
-    const newNote = {
+    const schema = {
+      name: Joi.string().min(3).required(),
+      date: Joi.string().required(),
+      category: Joi.string().min(3).max(25).required(),
+      content: Joi.string().min(3).required(),
+      dates: Joi.string().empty(""),
+      status: Joi.number().required()
+    };
+
+    const result = Joi.object(schema).validate(req.body);
+
+    if (result.error){
+      return res.status(400).send(result.error);
+    }
+    const note = {
       id: generateKey(),
       name: req.body.name,
       date: req.body.date,
@@ -34,8 +49,9 @@ router.post('/notes', function(req, res){
       dates: req.body.dates,
       status: req.body.stats
     }
-    notes.push(newNote);
-    res.json({notes})
+
+    notes.push(note);
+    res.json({note})
 })
 
 router.delete('/notes/:Id', function(req, res){
