@@ -18,15 +18,18 @@ const generateRandomKey = () => {
 
 const schemaPostRequest = {
     name: Joi.string().min(3).required(),
-    date: Joi.string().required(),
+    date: Joi.string().min(10).required(),
     category: Joi.string().min(3).max(25).required(),
     content: Joi.string().min(3).required(),
     dates: Joi.string().empty(""),
     status: Joi.number().required()
   };
 
+  const validateId = (curentId) => Joi.object({id: Joi.string().min(9).max(9).alphanum().required()}).validate(curentId); 
+
 module.exports = {
     getStats: convertToSummaryData,
     generateKey: generateRandomKey,
-    postScheme: schemaPostRequest
+    postScheme: schemaPostRequest,
+    validateId: validateId
 }
