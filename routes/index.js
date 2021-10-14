@@ -10,14 +10,20 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+
+
 router.get('/notes', function(req, res) {
   res.json({notes});
 });
+
+
 
 router.get('/notes/stats', function(req, res) {
   const stats = getStats(notes)
   res.json({stats})
 });
+
+
 
 router.get('/notes/:id', function(req, res) {
   const result = validateId(req.params);
@@ -32,9 +38,10 @@ router.get('/notes/:id', function(req, res) {
   if(note === undefined){
     return res.status(400).send(`There is no item with id: ${curentId}`);
   }
-  console.log(note)
   res.json({note})
 });
+
+
 
 router.post('/notes', function(req, res){
     const result = Joi.object(postScheme).validate(req.body);
@@ -56,6 +63,8 @@ router.post('/notes', function(req, res){
     res.json({note})
 })
 
+
+
 router.delete('/notes/:id', function(req, res){
   const curentId = req.params.id
   const result = validateId(req.params);
@@ -74,7 +83,22 @@ router.delete('/notes/:id', function(req, res){
   res.json({ note })
 })
 
+
+
 router.patch('/notes/:id', function(req, res){
+  const curentId = req.params.id;
+  const validateID = validateId(req.params);
+
+  if (validateID.error){
+    return res.status(400).send(validateID.error);
+  }
+
+  const result = Joi.object(postScheme).validate(req.body);
+
+  if (result.error){
+    return res.status(400).send(result.error);
+  }
+
   const editNote = {
     id: req.params.id,
     name: req.body.name,
@@ -84,7 +108,12 @@ router.patch('/notes/:id', function(req, res){
     dates: req.body.dates,
     status: req.body.stats
   }
-  const index = notes.findIndex(elem => elem.id == req.params.id);
+  const index = notes.findIndex(elem => elem.id == curentId);
+
+  if(index<0){
+    return res.status(400).send(`There is no item with id: ${curentId}`);
+  }
+
   const note = notes.splice(index, 1, editNote);
   res.json({ note })
 })
