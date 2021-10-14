@@ -3,10 +3,12 @@ const router = express.Router();
 const notes = require('../repositories');
 const {getStats, generateKey, postScheme, validateId} = require('../helpers');
 const Joi = require('joi');
+const path = require('path');
 
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  console.log(path.join(__filename, ".."));
   res.render('index', { title: 'Express' });
 });
 
