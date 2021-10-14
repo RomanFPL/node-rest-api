@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const notes = require('../repositories');
-const getStats = require('../helpers/calckSum');
-const generateKey = require('../helpers/randomKey');
+const {getStats, generateKey, postScheme} = require('../helpers');
 const Joi = require('joi');
 
 
@@ -26,16 +25,7 @@ router.get('/notes/:id', function(req, res) {
 });
 
 router.post('/notes', function(req, res){
-    const schema = {
-      name: Joi.string().min(3).required(),
-      date: Joi.string().required(),
-      category: Joi.string().min(3).max(25).required(),
-      content: Joi.string().min(3).required(),
-      dates: Joi.string().empty(""),
-      status: Joi.number().required()
-    };
-
-    const result = Joi.object(schema).validate(req.body);
+    const result = Joi.object(postScheme).validate(req.body);
 
     if (result.error){
       return res.status(400).send(result.error);

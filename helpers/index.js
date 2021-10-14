@@ -1,3 +1,5 @@
+const Joi = require("joi");
+
 const convertToSummaryData = (valueList) => {
     return [...new Set(valueList.map(row => row.category))]
     .map(unique => {
@@ -14,4 +16,17 @@ const generateRandomKey = () => {
     return (Math.random() + 1).toString(36).substring(4)
 }
 
-module.exports = convertToSummaryData
+const schemaPostRequest = {
+    name: Joi.string().min(3).required(),
+    date: Joi.string().required(),
+    category: Joi.string().min(3).max(25).required(),
+    content: Joi.string().min(3).required(),
+    dates: Joi.string().empty(""),
+    status: Joi.number().required()
+  };
+
+module.exports = {
+    getStats: convertToSummaryData,
+    generateKey: generateRandomKey,
+    postScheme: schemaPostRequest
+}
