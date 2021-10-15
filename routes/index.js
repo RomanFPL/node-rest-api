@@ -3,12 +3,10 @@ const router = express.Router();
 const notes = require('../repositories');
 const {getStats, generateKey, postScheme, validateId} = require('../helpers');
 const Joi = require('joi');
-const path = require('path');
 
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  console.log(path.join(__filename, ".."));
   res.render('index', { title: 'Express' });
 });
 
@@ -58,11 +56,11 @@ router.post('/notes', function(req, res){
       category: req.body.category,
       content: req.body.content,
       dates: req.body.dates,
-      status: req.body.stats
+      status: req.body.status
     }
 
     notes.push(note);
-    res.json({note})
+    res.status(201).json({note})
 })
 
 
