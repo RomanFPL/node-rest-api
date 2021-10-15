@@ -43,30 +43,69 @@
                                     <img src="svg/server.svg" alt="Server page">
                                     <span class="title">TODO API</span>
                                     <span class="hint">
-                                        This api provide the next request methods:<br> 
+                                        This api provide the following request methods:<br> 
                                         GET, POST, DELETE, PUTCH. <br>
-                                        To understend it click right buttons.
+                                        Every request returns json data.<br>
+                                        To understend it click left buttons.
                                     </span></li>
                             </div>
+                            <p class="credit"><a href="info.html" target="blank">About</a></p>
                             <div class="page" id="p2">
-                                <li class="icon fa fa-keyboard-o"><span class="title">Type</span></li>
+                                <li class="icon fa fa-desktop">
+                                    <span class="title">GET</span>
+                                    <span class="hint">
+                                        The following GET endpoints are provided:<br>
+                                        /notes - to get all notes<br>
+                                        /notes/:id - to get note by id<br>
+                                        /notes/stats - to get statistics about notes<br>
+                                    </span>
+                                </li>
                             </div>
                             <div class="page" id="p3">
-                                <li class="icon fa fa-coffee"><span class="title">Coffee</span></li>
+                                <li class="icon fa fa-book"><span class="title">POST</span>
+                                    <span class="hint">
+                                        The following POST endpoint is provided:<br>
+                                        /notes - to post new item<br>
+                                        <br>
+                                        You should provide the following body:<br>
+                                        name: length > 3 symbols<br>
+                                        date: string, length = 10 symbols<br>
+                                        category: string, 25 > length > 3 symbols<br>
+                                        content: length > 3 symbols<br>
+                                        dates: string<br>
+                                        status: number (1 or 0)<br>
+                                        <br>
+                                        It returns added item as a result
+                                    </span></li>
                             </div>
                             <div class="page" id="p4">
-                                <li class="icon fa fa-dribbble"><span class="title">Dribbble</span><span class="hint"><a
-                                            href="https://dribbble.com/rupok" target="_blank">Follow me on
-                                            Dribbble</a></span></li><a href="https://dribbble.com/rupok" target="_blank">
-                                </a>
+                                <li class="icon fa fa-trash-o"><span class="title">DELETE</span>
+                                    <span class="hint">
+                                        The following DELETE endpoint is provided:<br>
+                                        /notes/:id - to remove item<br>
+                                        <br>
+                                        It returns deleted item<br>
+                                    </span></li>
+                                </li>
                             </div>
                             <div class="page" id="p5">
-                                <li class="icon fa fa-dribbble"><span class="title">Dribbble</span><span class="hint"><a
-                                            href="https://dribbble.com/rupok" target="_blank">Follow me on
-                                            Dribbble</a></span></li><a href="https://dribbble.com/rupok" target="_blank">
-                                </a>
+                                <li class="icon fa fa-pencil-square-o"><span class="title">PATCH</span>
+                                    <span class="hint">
+                                        The following PATCH endpoint is provided:<br>
+                                        /notes/:id - to remove item<br>
+                                        <br>
+                                        You should provide the following body:<br>
+                                        name: length > 3 symbols<br>
+                                        date: string, length = 10 symbols<br>
+                                        category: string, 25 > length > 3 symbols<br>
+                                        content: length > 3 symbols<br>
+                                        dates: string<br>
+                                        status: number (1 or 0)<br>
+                                        <br>
+                                        It returns changed item as a result
+                                    </span></li>
+                                </li>
                             </div>
-                            <p class="credit"><a href="https://codepen.io/hrtzt/">About</a></p>
                         </section>
                     </div>
                 </div>
