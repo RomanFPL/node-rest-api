@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="icon" href="favicon/favicon.ico" type="image/x-icon"/>
+    <!-- <div>Автор иконок: <a href="https://www.flaticon.com/ru/authors/dinosoftlabs" title="DinosoftLabs">DinosoftLabs</a> from <a href="https://www.flaticon.com/ru/" title="Flaticon">www.flaticon.com</a></div> -->
+    <script>
+        if (document.location.search.match(/type=embed/gi)) {
+          window.parent.postMessage("resize", "*");
+        }
+    </script>
+    <title>ToDo Api</title> 
+</head>
+<body translate="no">
+    <div class="ct" id="t1">
+        <div class="ct" id="t2">
+            <div class="ct" id="t3">
+                <div class="ct" id="t4">
+                    <div class="ct" id="t5">
+                        <section>
+                            <ul>
+                                <a href="#t1">
+                                    <li class="icon fa" id="uno">API</li>
+                                </a>
+                                <a href="#t2">
+                                    <li class="icon fa" id="dos">GET</li>
+                                </a>
+                                <a href="#t3">
+                                    <li class="icon fa" id="tres">POST</li>
+                                </a>
+                                <a href="#t4">
+                                    <li class="icon fa" id="cuatro">DEL</li>
+                                </a>
+                                <a href="#t5">
+                                    <li class="icon fa" id="cinco">EDIT</li>
+                                </a>
+                            </ul>
+                            <div class="page" id="p1">
+                                <li class="icon fa">
+                                    <img src="svg/server.svg" alt="Server page">
+                                    <span class="title">TODO API</span>
+                                    <span class="hint">
+                                        This api provides the following request methods:<br> 
+                                        GET, POST, DELETE, PUTCH. <br>
+                                        Every request returns json data.<br>
+                                        To understand how does it work click on left buttons.
+                                    </span></li>
+                            </div>
+                            <p class="credit"><a href="info.html" target="blank">About</a></p>
+                            <div class="page" id="p2">
+                                <li class="icon fa fa-desktop">
+                                    <span class="title">GET</span>
+                                    <span class="hint">
+                                        The following GET endpoints are provided:<br>
+                                        /notes - to get all notes<br>
+                                        /notes/:id - to get note by id<br>
+                                        /notes/stats - to get statistics about notes<br>
+                                    </span>
+                                </li>
+                            </div>
+                            <div class="page" id="p3">
+                                <li class="icon fa fa-book"><span class="title">POST</span>
+                                    <span class="hint">
+                                        The following POST endpoint is provided:<br>
+                                        /notes - to post new item<br>
+                                        <br>
+                                        You should provide the following body:<br>
+                                        name: length > 3 symbols<br>
+                                        date: string, length = 10 symbols<br>
+                                        category: string, 25 > length > 3 symbols<br>
+                                        content: length > 3 symbols<br>
+                                        dates: string<br>
+                                        status: number (1 or 0)<br>
+                                        <br>
+                                        It returns added item as a result
+                                    </span></li>
+                            </div>
+                            <div class="page" id="p4">
+                                <li class="icon fa fa-trash-o"><span class="title">DELETE</span>
+                                    <span class="hint">
+                                        The following DELETE endpoint is provided:<br>
+                                        /notes/:id - to remove item<br>
+                                        <br>
+                                        It returns deleted item<br>
+                                    </span></li>
+                                </li>
+                            </div>
+                            <div class="page" id="p5">
+                                <li class="icon fa fa-pencil-square-o"><span class="title">PATCH</span>
+                                    <span class="hint">
+                                        The following PATCH endpoint is provided:<br>
+                                        /notes/:id - to remove item<br>
+                                        <br>
+                                        You should provide the following body:<br>
+                                        name: length > 3 symbols<br>
+                                        date: string, length = 10 symbols<br>
+                                        category: string, 25 > length > 3 symbols<br>
+                                        content: length > 3 symbols<br>
+                                        dates: string<br>
+                                        status: number (1 or 0)<br>
+                                        <br>
+                                        It returns changed item as a result
+                                    </span></li>
+                                </li>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
